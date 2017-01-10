@@ -1,0 +1,169 @@
+swagger: '2.0'
+info:
+  title: Doccy API
+  version: "1.0.0"
+
+basePath: /api
+paths:
+  /documents:
+    get:
+      parameters:
+      - in: query
+        name: offset
+        required: false
+        type: integer
+      - in: query
+        name: limit
+        required: false
+        type: integer
+      responses:
+        200:
+          description: get
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Document'
+  /suggestions:
+    get:
+      parameters:
+      - in: query
+        name: offset
+        required: false
+        type: integer
+      - in: query
+        name: limit
+        required: false
+        type: integer
+      responses:
+        200:
+          description: get
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Suggestion'
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: file
+        in: formData
+        required: true
+        type: file
+      - name: suggestion
+        in: formData
+        required: true
+        type: string
+      responses:
+        200:
+          description: get
+          schema:
+            $ref: '#/definitions/Suggestion'
+  /suggestions/{id}:
+    get:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: get
+          schema:
+            $ref: '#/definitions/Suggestion'
+  /suggestions/{id}/approve:
+    post:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        type: integer
+
+  /subscribers:
+    get:
+      responses:
+        200:
+          description: get
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Subscriber'
+    post:
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/definitions/Subscriber"
+      responses:
+        200:
+          description: get
+          schema:
+            $ref: '#/definitions/Subscriber'
+
+  /login:
+    post:
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/definitions/LoginPasswordCommand"
+
+  /logout:
+    post:
+      parameters:
+      - in: body
+        name: sessionToken
+        required: true
+        type: string
+
+definitions:
+  Document:
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      summary:
+        type: string
+      url:
+        type: string
+      createTs:
+        type: string
+
+  Suggestion:
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      summary:
+        type: string
+      url:
+        type: string
+      email:
+        type: string
+      createTs:
+        type: string
+      documentId:
+        type: integer
+
+  Subscriber:
+    type: object
+    properties:
+      id:
+        type: integer
+      email:
+        type: string
+      createTs:
+        type: string
+
+  LoginPasswordCommand:
+    type: object
+    properties:
+      login:
+        type: string
+      password:
+        type: string
