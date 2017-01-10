@@ -4,7 +4,7 @@ use Data::Dumper;
 
 sub get_file {
     my $self = shift;
-    $self->render(json => $self->stash);
+    $self->reply->static('images/800x500.png')
 }
 
 1;
