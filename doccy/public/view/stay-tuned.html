@@ -1,0 +1,30 @@
+<header class="jumbotron hero-spacer">
+    <span class="media-left hidden-xs">
+        <span class="img-doccy-main"></span>
+    </span>
+
+    <div class="media-body">
+        <h1>Добро пожаловать!</h1>
+        <div id="beforeSubscribe">
+            <p>Мы усердно трудимся для экономии вашего времени, а пока не всё ещё готово, подпишитесь на обновления,
+                чтобы не пропустить открытие</p>
+            <form class="form-inline" ng-submit="subscribe(email)">
+                <div class="alert alert-danger" ng-hide="!subscriberSendResult.sent">
+                    {{subscriberSendResult.message}}
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon subscribe-field-prefix">@</div>
+                        <input type="text" class="form-control subscribe-field"
+                               id="email" name="email" placeholder="email" ng-model="email">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Подписаться</button>
+            </form>
+        </div>
+        <div id="okSubscribe" style="display: none">
+            <p>Спасибо за проявленный интерес! <br>
+               Мы обязательно сообщим вам о нашем открытии.</p>
+        </div>
+    </div>
+</header>

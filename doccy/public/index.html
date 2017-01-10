@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Welcome to the Mojolicious real-time web framework!</title>
-  </head>
-  <body>
-    <h2>Welcome to the Mojolicious real-time web framework!</h2>
-    This is the static document "public/index.html",
-    <a href="/">click here</a> to get back to the start.
-  </body>
+<html ng-app="app" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="images/dolphin-icon.png"/>
+    <link rel="apple-touch-icon" href="images/dolphin-icon.png"/>
+
+    <title>Doccy - твои шаблоны документов</title>
+
+    <link href="css/lavish-bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/doccy.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/compatibility/html5shiv.js"></script>
+    <script src="js/compatibility/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#/" class="fa fa-bell-o">Добро пожаловать</a>
+            </li>
+            <li>
+                <a href="#/documents" class="fa fa-file-word-o">Документы</a>
+            </li>
+            <li class="hidden-xs">
+                <a href="#/about" class="fa fa-question-circle-o">О проекте</a>
+            </li>
+            <li class="hidden-xs">
+                <a href="mailto:feedback@doccy.ru" class="fa fa-envelope-o">Связаться с нами</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div ng-view></div>
+
+    <hr>
+
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>С заботой о студентах, doccy 2016</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/nanobar.js"></script>
+
+<script src="js/angular/angular.min.js"></script>
+<script src="js/angular/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/main.js"></script>
+</body>
 </html>

@@ -1,0 +1,66 @@
+body {
+    padding-top: 113px;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.navbar li .fa:before {
+    padding-right: 0.5em;
+}
+
+.input-group-addon.subscribe-field-prefix {
+    background-color: #306ED0;
+    color: white;
+    border-color: #2B63BC;
+}
+
+.form-control.subscribe-field {
+    border-color: #2B63BC;
+    width: 250px;
+}
+
+.input-group-addon.tag-field-suffix {
+    background-color: #306ED0;
+    color: white;
+    border-color: #2B63BC;
+    cursor: pointer;
+}
+
+.img-doccy-main {
+    display: inline-block;
+    width: 256px;
+    height: 256px;
+    background-image: url("../images/dolphin-icon.png");
+}
+
+.ng-invalid-httpvalidator, .ng-invalid-httpvalidator:focus {
+    border-color: #f05;
+}
+
+.width300 {
+    width: 300px;
+}
+
+a[ng-click]{
+    cursor: pointer;
+}
+
+.caption p {
+    font-size: 12pt;
+}

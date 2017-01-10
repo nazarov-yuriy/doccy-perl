@@ -1,0 +1,29 @@
+<header class="jumbotron">
+    <h1>Документы</h1>
+    <div class="container">
+        <div class="row text-center">
+
+            <div ng-repeat="doc in documents" class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="/api/files/{{doc.preview}}"/>
+                    <div class="caption">
+                        <h3>{{doc.title}}</h3>
+                        <p>{{ renderTags(doc.tags) }}</p>
+                        <p>
+                            <a href="{{doc.url}}" class="btn btn-primary">Скачать!</a>
+                            <a href="#/details/{{doc.id}}" class="btn btn-default">Подробнее</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="pagination" ng-show="pagination.pages.length > 1">
+            <li ng-repeat="pageNum in pagination.pages"
+                ng-class="pageNum == '...' ? 'disabled' : (pageNum == pagination.page ? 'active' : '')">
+                <a href="#/documents/{{pageNum}}">{{pageNum}}</a>
+            </li>
+        </ul>
+    </div>
+    <a href="#/suggest-document">Предложить новый документ</a>
+</header>

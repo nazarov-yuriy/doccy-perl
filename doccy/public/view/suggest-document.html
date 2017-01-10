@@ -1,0 +1,65 @@
+<header class="jumbotron">
+    <h1>Предложить документ</h1>
+    <form ng-submit="suggestDocument(document)" name="suggestDocumentForm">
+        <div class="form-group">
+            <div class="alert" ng-class=" suggestionSendResult.successfully ? 'alert-success' : 'alert-danger' "
+                 ng-hide="!suggestionSendResult.sent">
+                {{suggestionSendResult.message}}
+            </div>
+            <div class="width300">
+                <label for="title">Название</label>
+                <div class="input-group width300">
+                    <input type="text" class="form-control"
+                           id="title" name="title" placeholder="Название" ng-model="document.title" httpvalidator>
+                </div>
+            </div>
+            <div class="width300">
+                <label for="url">Ссылка</label>
+                <div class="input-group width300">
+                    <input type="text" class="form-control"
+                           id="url" name="url" placeholder="Ссылка" ng-model="document.url" httpvalidator>
+                </div>
+            </div>
+            <div class="width300">
+                <label for="tag">Теги</label>
+                <div class="input-group">
+                    <input type="text" class="form-control tag-field"
+                           placeholder="Новый тег" id="tag" name="tag" ng-model="tag"
+                           onkeypress="return event.keyCode != 13;">
+                    <div class="input-group-addon tag-field-suffix" ng-click="addTag()">+</div>
+                </div>
+                <div>
+                    <ul>
+                        <li ng-repeat="(key, value) in document.tags">
+                            {{key}}
+                            <a ng-click="delTag(key)" class="fa fa-trash-o"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="width300">
+                <label for="email">Email</label>
+                <div class="input-group width300">
+                    <input type="text" class="form-control"
+                           id="email" name="email" placeholder="Email" ng-model="document.email" httpvalidator>
+                </div>
+            </div>
+            <div class="width300">
+                <label for="preview">Превью</label>
+                <div class="input-group width300">
+                    <input type="file" file="file" required id="preview" />
+                </div>
+            </div>
+            <div class="width300">
+                <label for="summary">Описание</label>
+                <div class="input-group width300">
+                <textarea type="text" class="form-control"
+                          id="summary" name="summary" placeholder="Описание" ng-model="document.summary"
+                          cols="40" rows="5" httpvalidator>
+                </textarea>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Предложить</button>
+    </form>
+</header>

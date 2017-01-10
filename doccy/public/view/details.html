@@ -1,0 +1,13 @@
+<header class="jumbotron">
+    <h1>{{doc ? doc.title : ''}}</h1>
+    <div>
+        <img src="/api/files/{{doc ? doc.preview : ''}}"/>
+    </div>
+    <label>Теги:</label>
+    <p>{{ doc ? renderTags(doc.tags) : '' }}</p>
+
+    <label>Описание:</label>
+    <p>{{doc ? doc.summary : ''}}</p>
+
+    <a href="{{doc ? doc.url : ''}}" class="btn btn-primary">Скачать!</a>
+</header>

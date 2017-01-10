@@ -4,6 +4,8 @@ use Mojo::Base 'Mojolicious';
 sub startup {
     my $self = shift;
     my Mojolicious::Routes $r = $self->routes();
+    $r->get('/')->to(cb => sub {shift->reply->static('index.html')});
+
     $r->get('/api/documents/count')->to(controller => 'document', action => 'count');
     $r->get('/api/documents')->to(controller => 'document', action => 'all');
     $r->get('/api/documents/:id')->to(controller => 'document', action => 'get');
