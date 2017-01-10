@@ -1,8 +1,13 @@
 package Doccy;
 use Mojo::Base 'Mojolicious';
 
+use Mojo::Pg;
+
 sub startup {
     my $self = shift;
+
+    $self->helper(pg => sub { state $pg = Mojo::Pg->new('postgresql://root@127.0.0.1/doccy') });
+
     my Mojolicious::Routes $r = $self->routes();
     $r->get('/')->to(cb => sub {shift->reply->static('index.html')});
 
