@@ -1,4 +1,4 @@
-package Doccy::Controller::Suggestion;
+package Doccy::Controller::SubscriberCtl;
 use Mojo::Base 'Mojolicious::Controller';
 use Data::Dumper;
 
@@ -8,16 +8,6 @@ sub all {
 }
 
 sub create {
-    my $self = shift;
-    $self->render(json => $self->stash);
-}
-
-sub get {
-    my $self = shift;
-    $self->render(json => $self->stash);
-}
-
-sub approve {
     my $self = shift;
     $self->render(json => $self->stash);
 }

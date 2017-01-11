@@ -1,4 +1,4 @@
-package Doccy::Controller::File;
+package Doccy::Controller::FileCtl;
 use Mojo::Base 'Mojolicious::Controller';
 use Data::Dumper;
 
