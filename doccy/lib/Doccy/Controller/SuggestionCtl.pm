@@ -1,10 +1,9 @@
 package Doccy::Controller::SuggestionCtl;
 use Mojo::Base 'Mojolicious::Controller';
-use Data::Dumper;
 
 sub all {
     my $self = shift;
-    $self->render(json => $self->stash);
+    $self->render(json => $self->suggestions->all($self->param('offset'), $self->param('limit')));
 }
 
 sub create {
@@ -14,7 +13,7 @@ sub create {
 
 sub get {
     my $self = shift;
-    $self->render(json => $self->stash);
+    $self->render(json => $self->suggestions->get($self->stash->{id}));
 }
 
 sub approve {

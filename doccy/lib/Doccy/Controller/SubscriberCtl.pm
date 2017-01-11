@@ -1,10 +1,9 @@
 package Doccy::Controller::SubscriberCtl;
 use Mojo::Base 'Mojolicious::Controller';
-use Data::Dumper;
 
 sub all {
     my $self = shift;
-    $self->render(json => $self->stash);
+    $self->render(json => $self->subscribers->all($self->param('offset'), $self->param('limit')));
 }
 
 sub create {

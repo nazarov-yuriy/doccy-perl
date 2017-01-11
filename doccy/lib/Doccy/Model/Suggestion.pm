@@ -1,4 +1,4 @@
-package Doccy::Model::Document;
+package Doccy::Model::Suggestion;
 use strict;
 use warnings FATAL => 'all';
 use utf8;
@@ -18,13 +18,15 @@ sub new {
     }
 
     my $self = {
-        id       => 0,
-        title    => "Title",
-        summary  => "Summary",
-        createTs => "2017-01-11 2:00:00.000",
-        url      => "http://doccy/123456",
-        tags     => { },
-        preview  => 0,
+        id         => 0,
+        title      => "Title",
+        summary    => "Summary",
+        createTs   => "2017-01-11 2:00:00.000",
+        url        => "http://doccy/123456",
+        email      => "i\@i.i",
+        tags       => { },
+        documentId => 0,
+        preview    => 0,
         %$args
     };
     return bless $self, $class;

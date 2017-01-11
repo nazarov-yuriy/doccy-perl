@@ -6,8 +6,8 @@ has 'pg';
 
 sub all {
     my $self = shift;
-    my $offset = shift;
-    my $limit = shift;
+    my $offset = shift || 0;
+    my $limit = shift || 20;
     my @res;
     my $pg_res = $self->pg->db->query('select * from "DOCCY_DOCUMENT" offset ? limit ?', $offset, $limit);
     while (my $val = $pg_res->hash()) {

@@ -1,14 +1,9 @@
 package Doccy::Controller::DocumentCtl;
 use Mojo::Base 'Mojolicious::Controller';
-use Data::Dumper;
-use Doccy::Model::Document;
-use Doccy::Service::DocumentService;
 
 sub all {
     my $self = shift;
-    my $offset = $self->param('offset') || 0;
-    my $limit = $self->param('limit') || 20;
-    $self->render(json => $self->documents->all($offset, $limit));
+    $self->render(json => $self->documents->all($self->param('offset'), $self->param('limit')));
 }
 
 sub count {
@@ -18,8 +13,7 @@ sub count {
 
 sub get {
     my $self = shift;
-    my $id = $self->stash->{id};
-    $self->render(json => $self->documents->get($id));
+    $self->render(json => $self->documents->get($self->stash->{id}));
 }
 
 1;
