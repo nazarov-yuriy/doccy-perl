@@ -3,6 +3,7 @@ use strict;
 use warnings FATAL => 'all';
 use utf8;
 use parent 'Doccy::Model::Base';
+use POSIX;
 
 sub new {
     my $class = shift;
@@ -13,15 +14,17 @@ sub new {
         $args->{lc $key} = $val;
     }
     if (exists $args->{tags}) {
-        utf8::encode($args->{tags});
-        $args->{tags} = Mojo::JSON::decode_json( $args->{tags} );
+        if ('SCALAR' eq ref $args->{tags}) {
+            utf8::encode($args->{tags});
+            $args->{tags} = Mojo::JSON::decode_json( $args->{tags} );
+        }
     }
 
     my $self = {
         id         => 0,
         title      => "Title",
         summary    => "Summary",
-        createTs   => "2017-01-11 2:00:00.000",
+        createTs   => strftime("%Y-%m-%d %H:%M:%S.000", localtime),
         url        => "http://doccy/123456",
         email      => "i\@i.i",
         tags       => { },

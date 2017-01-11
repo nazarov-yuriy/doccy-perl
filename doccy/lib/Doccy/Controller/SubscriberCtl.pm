@@ -8,7 +8,7 @@ sub all {
 
 sub create {
     my $self = shift;
-    $self->render(json => $self->stash);
+    $self->render(json => $self->subscribers->create($self->req->json));
 }
 
 1;

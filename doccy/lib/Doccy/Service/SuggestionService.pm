@@ -25,7 +25,19 @@ sub get {
 }
 
 sub create {
-    ...;
+    my $self = shift;
+    my $suggestion = Doccy::Model::Suggestion->new(shift);
+    my $sql = 'insert into "DOCCY_SUGGESTION" ("TITLE", "SUMMARY", "CREATE_TS", "URL", "EMAIL", "TAGS", "PREVIEW")'.
+        ' values (?, ?, ?, ?, ?, ?::json, ?) returning "ID"';
+    return $self->pg->db->query($sql,
+        $suggestion->{title},
+        $suggestion->{summary},
+        $suggestion->{createTs},
+        $suggestion->{url},
+        $suggestion->{email},
+        { json => $suggestion->{tags} },
+        $suggestion->{preview},
+    )->hash->{id};
 }
 
 1;

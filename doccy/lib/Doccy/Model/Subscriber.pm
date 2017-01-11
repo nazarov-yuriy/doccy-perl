@@ -3,6 +3,7 @@ use strict;
 use warnings FATAL => 'all';
 use utf8;
 use parent 'Doccy::Model::Base';
+use POSIX;
 
 sub new {
     my $class = shift;
@@ -16,7 +17,7 @@ sub new {
     my $self = {
         id       => 0,
         email    => "i\@i.i",
-        createTs => "2017-01-11 2:00:00.000",
+        createTs => strftime("%Y-%m-%d %H:%M:%S.000", localtime),
         %$args
     };
     return bless $self, $class;
